@@ -6,17 +6,41 @@ function App() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setSeconds(seconds + 1);
+      if (seconds > 3) {
+        setSeconds(1);
+      } else {
+        setSeconds(seconds + 1);
+      }
     }, 5000);
-    // clearing interval
     return () => clearInterval(timer);
   });
   return (
     <div className="App">
       <div>
-        {(seconds === 1 && <div style={{ backgroundColor: "red" , height:'50px', width:'50px'}}>-</div>) ||
-          (seconds === 2 &&  <div style={{ backgroundColor:"orange" , height:'50px', width:'50px'}}> -</div>) ||
-          (seconds === 3 && <div style={{ backgroundColor:"green" , height:'50px', width:'50px'}}> -</div>)}
+        <div
+          style={{
+            backgroundColor: seconds === 3 ? "green" : "white",
+            height: "50px",
+            width: "50px",
+            border: "1px solid gray",
+          }}
+        ></div>
+        <div
+          style={{
+            backgroundColor: seconds === 2 ? "orange" : "white",
+            height: "50px",
+            width: "50px",
+            border: "1px solid gray",
+          }}
+        ></div>
+          <div
+            style={{
+              backgroundColor: seconds === 1 ? "red" : "white",
+              height: "50px",
+              width: "50px",
+              border: "1px solid gray",
+            }}
+          ></div>
       </div>
     </div>
   );
